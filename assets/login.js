@@ -1,7 +1,7 @@
 async function saveToken(chargeUtile) {
     const tokenData = await postData(LOGIN_URL, chargeUtile)
-    window.localStorage.setItem('token', tokenData.token)
     if (tokenData.token !== undefined) {
+        window.sessionStorage.setItem('token', tokenData.token)
         window.location.href = "index.html"
     }
 }

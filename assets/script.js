@@ -21,6 +21,7 @@ function initButtonsEventListener(list) {
             filterWorksByCategory(categoryId, list);
             document.querySelector(".filter_selected").classList.remove("filter_selected")
             event.target.classList.add("filter_selected")
+            console.log(window.localStorage.getItem("token"))
         })
     }
 }
@@ -38,8 +39,26 @@ function filterWorksByCategory(categoryId, list) {
     createGallery(worksFiltrees);
 }
 
+function genererPageAdministrateur() {
+    const modeEdition = document.querySelector(".mode-edition")
+    modeEdition.classList.remove("cache")
+    const modifier = document.querySelector(".modifier")
+    modifier.classList.remove("cache")
+    const loginLink = document.querySelector(".js-log")
+    loginLink.href = "index.html"
+    const loginText = document.querySelector(".js-log li")
+    loginText.innerHTML = "Logout"
+    loginLink.addEventListener("click", () => {
+        sessionStorage.removeItem("token")
+    })
+}
+
 async function genererPage() {
     let works = await getData(BASE_URL);
+    if (sessionStorage['token']) {
+        genererPageAdministrateur()
+        genererModal(works)
+    } 
     createGallery(works);
     initButtonsEventListener(works);
 }
