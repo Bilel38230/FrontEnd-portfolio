@@ -21,3 +21,11 @@ async function postData(url, chargeUtile) {
     const tokenData = await reponse.json()
     return tokenData
 }
+
+async function deleteData(url) {
+    const reponse = await fetch(url, {
+        method: "delete",
+        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("token")}
+    })
+    console.log(reponse)
+}

@@ -1,4 +1,4 @@
-function createGallery(liste) {
+async function createGallery(liste) {
     let gallery = document.querySelector(".gallery");
     for (let i = 0; i < liste.length; i++) {
         let figure = createNode('figure');
@@ -21,7 +21,6 @@ function initButtonsEventListener(list) {
             filterWorksByCategory(categoryId, list);
             document.querySelector(".filter_selected").classList.remove("filter_selected")
             event.target.classList.add("filter_selected")
-            console.log(window.localStorage.getItem("token"))
         })
     }
 }
