@@ -34,35 +34,35 @@ function updateImageDisplay(curFiles) {
     const preview = document.querySelector(".preview")
     if (validFileType(curFiles[0]) && validFileSize(curFiles[0])) {
         testerMessageErreur()
+        const titre = document.getElementById("titre")
         const selecteurImage = document.querySelector(".selecteur-image")
         selecteurImage.classList.add("cache")
         var image = createNode("img");
         image.src = window.URL.createObjectURL(curFiles[0]);
         append(preview, image);
+        titre.value = curFiles[0].name.replace(".png", "")
+        activerBtnEnvoyer()
     } else {
         testerMessageErreur()
         let para = createNode("p");
         para.textContent = "File name " + curFiles[0].name + ": Not a valid file type. Update your selection.";
         append(preview, para);
+        const inputFile = document.getElementById("selected-image")
+        inputFile.value = ""
     }
 }
 
 async function uploadImage(donneesFormulaire) {
-    await upload(donneesFormulaire);
-    updateGallerys()
     reinitialiserModalsInsert()
     activerBtnEnvoyer()
     testerMessageErreur()
-    const formulaire = document.querySelector(".formulaire")
-    let para = createNode("p");
-    para.classList.add("messageCorrect")
-    para.textContent = "Le fichier " + donneesFormulaire.get("image").name + " a été correctement envoyé";
-    append(formulaire, para);
+    await upload(donneesFormulaire);
+    updateGallerys()
 }
 
 function activerBtnEnvoyer() {
+    testerMessageErreur()
     const selectCategorie = document.getElementById("categorie")
-    const titre = document.getElementById("titre")
     const btnEnvoyer = document.querySelector(".modal-wrapper2 button")
     const inputFile = document.getElementById("selected-image")
     if (inputFile.files.length != 0 && validerInput(titre.value) && validerInput(selectCategorie.value)) {
@@ -77,10 +77,12 @@ function activerBtnEnvoyer() {
         })
     } else {
         btnEnvoyer.setAttribute("disabled", "")
-        const formulaire = document.querySelector(".formulaire")
-        let para = createNode("p");
-        para.textContent = "Veuillez saisir un titre et une catégorie";
-        append(formulaire, para);
+        if (inputFile.files.length === 0) {
+            const preview = document.querySelector(".preview")
+            let para = createNode("p");
+            para.textContent = "Update your selection.";
+            append(preview, para);
+        }
     }
 }
 
@@ -92,8 +94,6 @@ function genererRequete() {
     inputFile.addEventListener("change", (e) => {
         curFiles = e.target.files
         updateImageDisplay(curFiles)
-        titre.value = curFiles[0].name.replace(".png", "")
-        activerBtnEnvoyer()
     })
     selectCategorie.addEventListener("change", () => {
         activerBtnEnvoyer()
@@ -107,6 +107,8 @@ function reinitialiserModalsInsert() {
     testerMessageErreur()
     const previewImg = document.querySelector(".preview img")
     if (previewImg !== null) {
+        const inputFile = document.getElementById("selected-image")
+        inputFile.value = ""
         previewImg.remove()
         const selecteurImage = document.querySelector(".selecteur-image")
         selecteurImage.classList.remove("cache")

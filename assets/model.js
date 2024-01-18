@@ -36,15 +36,21 @@ async function deleteData(url) {
 }
 
 async function upload(donneesFormulaire) {
+    const formulaire = document.querySelector(".formulaire")
+    let para = createNode("p");
     try {
-        
+
         const reponse = await fetch(BASE_URL, {
             method: "post",
-            headers: {'Authorization': 'Bearer '  + sessionStorage.getItem("token")},
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem("token") },
             body: donneesFormulaire
         });
         console.log(reponse);
         const resultat = await reponse.json();
+        testerMessageErreur()
+        para.classList.add("messageCorrect")
+        para.textContent = "Le fichier " + donneesFormulaire.get("image").name + " a été correctement envoyé";
+        append(formulaire, para);
         console.log("Réussite :", resultat);
     } catch (erreur) {
         console.error("Erreur :", erreur);

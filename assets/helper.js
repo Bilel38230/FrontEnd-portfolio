@@ -25,8 +25,11 @@ function validerInput(chaine) {
     let regex = new RegExp("^[a-zA-Z0-9_\.-]+$")
     let resultat = regex.test(chaine)
     if (resultat === false) {
+        const formulaire = document.querySelector(".formulaire")
+        let para = createNode("p");
+        para.textContent = "Veuillez saisir un titre et une catégorie";
+        append(formulaire, para);
     }
-    testerMessageErreur()
     return resultat      
 }
 
