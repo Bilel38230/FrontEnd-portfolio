@@ -4,6 +4,12 @@ async function getData(url) {
     return works;
 }
 
+async function getCategories(url) {
+    const reponse = await fetch(url)
+    const categories = await reponse.json()
+    return categories
+}
+
 async function postData(url, chargeUtile) {
     const reponse = await fetch(url, {
         method: "post",
@@ -25,7 +31,23 @@ async function postData(url, chargeUtile) {
 async function deleteData(url) {
     const reponse = await fetch(url, {
         method: "delete",
-        headers: {'Authorization': 'Bearer ' + sessionStorage.getItem("token")}
+        headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem("token") }
     })
-    console.log(reponse)
 }
+
+async function upload(donneesFormulaire) {
+    try {
+        
+        const reponse = await fetch(BASE_URL, {
+            method: "post",
+            headers: {'Authorization': 'Bearer '  + sessionStorage.getItem("token")},
+            body: donneesFormulaire
+        });
+        console.log(reponse);
+        const resultat = await reponse.json();
+        console.log("Réussite :", resultat);
+    } catch (erreur) {
+        console.error("Erreur :", erreur);
+    }
+}
+

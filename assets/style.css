@@ -394,9 +394,9 @@ footer nav ul {
 	text-align: center;
 }
 
-.modal-wrapper .iconeX {
+.iconeX {
 	position: absolute;
-	top: 24px;
+	top: 26px;
 	right: 30px;
 }
 
@@ -404,7 +404,7 @@ footer nav ul {
 	font-family: "Work Sans";
 	font-weight: 400;
 	font-size: 26px;
-	margin-bottom: 46px;
+	color: black;
 }
 
 .modal-gallery {
@@ -415,10 +415,11 @@ footer nav ul {
 	grid-row-gap: 8px;
 	padding-bottom: 67.3px;
 	border-bottom: solid 1px #B3B3B3;
+	margin: 46px 0 38px 0;
 }
 
 .modal-gallery div {
-	position: relative
+	position: relative;
 }
 
 .modal-gallery img {
@@ -441,7 +442,109 @@ footer nav ul {
 .modal-wrapper button {
 	color: white;
 	background-color: #1D6154;
-	margin: 38px 0 45px 0;
 	width: 237px;
 	text-align: center;
+}
+
+.flecheG {
+	position: absolute;
+	top: 26px;
+	left: 30px;
+}
+
+.apercu-image {
+	position: relative;
+	height: 169px;
+	margin: 36px 0 30px;
+	padding: 13px 0 19px 0;
+	background-color: #E8F1F6;
+}
+
+.selecteur-image {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 7px;
+}
+
+.apercu-image i {
+	color: #B9C5CC;
+}
+
+#selected-image {
+	display: none;
+}
+
+.apercu-image label {
+	width: 173px;
+	height: 37px;
+	border-radius: 50px;
+	background-color: #CBD6DC;
+	border: none;
+	font-family: "Work Sans";
+	font-weight: 500;
+	font-size: 14px;
+	color: #306685;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.apercu-image span {
+	font-size: 10px;
+	color:#444444;
+}
+
+.preview {
+	display: flex;
+	justify-content: center;
+	color: red;
+}
+
+.preview img {
+	height: 169px;
+	width: 129px;
+	margin-top: -13px;
+} 
+
+.formulaire {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	gap: 10px;
+	margin-bottom: 32px;
+	padding-bottom: 47px;
+	border-bottom: solid 1px #B3B3B3;
+}
+
+.formulaire label {
+	color: #3D3D3D;
+}
+
+#titre {
+	margin-bottom: 11px;
+	height: 51px;
+	border: none;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+	text-align: center;
+}
+
+#categorie {
+	height: 51px;
+	border: none;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
+	text-align: center;
+}
+
+.formulaire p {
+	color: red;
+}
+
+.formulaire .messageCorrect {
+	color: green;
+}
+
+button:disabled {
+	background-color: #A7A7A7;
+	border: none;
 }

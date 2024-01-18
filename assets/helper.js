@@ -20,3 +20,19 @@ function validerPassword(chaine) {
         throw new Error(`Le format du mot de passe saisi est incorret`)
     }
 }
+
+function validerInput(chaine) {
+    let regex = new RegExp("^[a-zA-Z0-9_\.-]+$")
+    let resultat = regex.test(chaine)
+    if (resultat === false) {
+    }
+    testerMessageErreur()
+    return resultat      
+}
+
+function testerMessageErreur(){
+    const para = document.querySelector(".modal-wrapper2 p")
+    if (para !== null) {
+        para.remove()
+    }
+}

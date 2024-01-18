@@ -24,26 +24,48 @@ function createModalGallery(liste) {
     }
 }
 
+function stopPropagation() {
+    const modalWrappers = document.querySelectorAll(".modal-wrapper")
+    for (mW of modalWrappers) {
+        mW.addEventListener("click", (e) => {
+            e.stopPropagation()
+        })
+    }
+}
+
+function reinitialiserModals(modal) {
+    modal.classList.add("cache")
+    const modalCache = document.querySelector(".modal .cache")
+    modalCache.classList.remove("cache")
+    modal2 = document.querySelector(".modal-wrapper2")
+    modal2.classList.add("cache")
+}
+
 function closeModal(modal) {
     modal.addEventListener("click", () => {
-        modal.classList.add("cache")
+        reinitialiserModals(modal)
+        reinitialiserModalsInsert()
     })
-    const modalWrapper = document.querySelector(".modal-wrapper")
-    modalWrapper.addEventListener("click", (e) => {
-        e.stopPropagation()
-    })
-    const iconeX = document.querySelector(".iconeX")
-    iconeX.addEventListener("click", () => {
-        modal.classList.add("cache")
-    })
+    const iconeX = document.querySelectorAll(".iconeX")
+    for (x of iconeX) {
+        x.addEventListener("click", () => {
+            reinitialiserModals(modal)
+            reinitialiserModalsInsert()
+        })
+    }
+    stopPropagation()
 }
-async function supprimerWork(url) {
-    await deleteData(url);
+async function updateGallerys() {
     const works = await getData(BASE_URL);
     document.querySelector(".modal-gallery").innerHTML = ""
     createModalGallery(works)
     document.querySelector(".gallery").innerHTML = "";
     createGallery(works);
+}
+
+async function supprimerWork(url) {
+    await deleteData(url);
+    updateGallerys()
 }
 
 function genererModal(liste) {
@@ -53,6 +75,7 @@ function genererModal(liste) {
         const modal = document.querySelector(".modal");
         modal.classList.remove("cache")
         closeModal(modal)
+        genererModal2(liste)
     });
 }
 
