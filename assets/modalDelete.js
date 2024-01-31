@@ -75,7 +75,6 @@ function genererModal(liste) {
         const modal = document.querySelector(".modal");
         modal.classList.remove("cache")
         closeModal(modal)
-        genererModal2(liste)
     });
 }
 

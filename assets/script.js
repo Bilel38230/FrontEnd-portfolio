@@ -57,6 +57,7 @@ async function genererPage() {
     if (sessionStorage['token']) {
         genererPageAdministrateur()
         genererModal(works)
+        genererModal2()
     } 
     createGallery(works);
     initButtonsEventListener(works);

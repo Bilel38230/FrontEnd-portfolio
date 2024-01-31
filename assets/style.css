@@ -264,6 +264,11 @@ li:hover {
 	font-weight: 400;
 	font-size: 14px;
 	margin: 0 10.42px 0 31px ;
+	cursor: pointer;
+}
+
+.modifier:hover {
+	font-weight: 700;
 }
 
 .filter {
@@ -358,6 +363,10 @@ input[type="submit"] {
 	border-radius: 60px;
 }
 
+input[type="submit"]:hover {
+	background-color: #0E2F28;
+}
+
 #contact a {
 	color: #3D3D3D;
 	font-weight: 500;
@@ -444,6 +453,10 @@ footer nav ul {
 	background-color: #1D6154;
 	width: 237px;
 	text-align: center;
+}
+
+.modal-wrapper button:hover {
+	background-color: #0E2F28;
 }
 
 .flecheG {
@@ -547,4 +560,8 @@ footer nav ul {
 button:disabled {
 	background-color: #A7A7A7;
 	border: none;
+}
+
+button:disabled:hover {
+	background-color: #A7A7A7;
 }

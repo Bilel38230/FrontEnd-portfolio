@@ -31,6 +31,7 @@ function validFileSize(file) {
 }
 
 function updateImageDisplay(curFiles) {
+    console.log("updateImageDisplay")
     const preview = document.querySelector(".preview")
     if (validFileType(curFiles[0]) && validFileSize(curFiles[0])) {
         testerMessageErreur()
@@ -87,11 +88,13 @@ function activerBtnEnvoyer() {
 }
 
 function genererRequete() {
+    console.log("genererRequete");
     const selectCategorie = document.getElementById("categorie")
     const titre = document.getElementById("titre")
     const inputFile = document.getElementById("selected-image")
     let curFiles = null;
     inputFile.addEventListener("change", (e) => {
+        console.log("genererRequete");
         curFiles = e.target.files
         updateImageDisplay(curFiles)
     })
@@ -119,7 +122,7 @@ function reinitialiserModalsInsert() {
     selectCategorie.value = ""
 }
 
-function genererModal2(liste) {
+function genererModal2() {
     const boutonModal1 = document.querySelector(".modal-wrapper1 button")
     boutonModal1.addEventListener("click", () => {
         genererChoixCategorie()
@@ -132,7 +135,7 @@ function genererModal2(liste) {
             modal1.classList.remove("cache")
             modal2.classList.add("cache")
             reinitialiserModalsInsert()
-        })
-        genererRequete()
+        })  
     })
+    genererRequete()
 }
