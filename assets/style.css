@@ -207,6 +207,7 @@ button {
 	height: 37px;
 	border-radius: 60px;
 	border-color: #1D6154;
+	cursor: pointer;
 }
 
 nav ul {
@@ -362,6 +363,7 @@ input[type="submit"] {
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
+	cursor: pointer;
 }
 
 input[type="submit"]:hover {
@@ -502,6 +504,7 @@ footer nav ul {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 }
 
 .apercu-image span {
