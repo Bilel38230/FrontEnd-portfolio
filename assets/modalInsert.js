@@ -1,6 +1,5 @@
 async function genererChoixCategorie() {
     const selectCategorie = document.getElementById("categorie")
-    console.log(selectCategorie.length);
     if (selectCategorie.length === 1) {
         const categories = await getCategories(CATEGORIES_URL)
         for (i = 0; i < categories.length; i++) {
@@ -88,13 +87,11 @@ function activerBtnEnvoyer() {
 }
 
 function genererRequete() {
-    console.log("genererRequete");
     const selectCategorie = document.getElementById("categorie")
     const titre = document.getElementById("titre")
     const inputFile = document.getElementById("selected-image")
     let curFiles = null;
     inputFile.addEventListener("change", (e) => {
-        console.log("genererRequete");
         curFiles = e.target.files
         updateImageDisplay(curFiles)
     })

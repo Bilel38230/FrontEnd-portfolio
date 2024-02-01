@@ -265,6 +265,7 @@ li:hover {
 	font-size: 14px;
 	margin: 0 10.42px 0 31px ;
 	cursor: pointer;
+	color: black;
 }
 
 .modifier:hover {
